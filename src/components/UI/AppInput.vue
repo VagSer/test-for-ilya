@@ -8,12 +8,16 @@ const props = defineProps({
         type: String,
         default: 'text',
     },
+    autocomplete: {
+        type: String,
+        default: 'new-password',
+    },
     inputmode: {
         type: String,
         default: 'text',
     },
     value: {
-        required: true,
+        required: false,
     },
     placeholder: {
         type: String,
@@ -40,7 +44,7 @@ const updateValue = (event) => {
 
 const hasError = computed(() => !!props.errors?.length ?? false)
 
-const inputClasses = computed(() => hasError.value? 'inputField error' : 'inputField')
+const inputClasses = computed(() => props.disabled? 'inputField disabled' : hasError.value? 'inputField error' : 'inputField')
 </script>
 
 <template>
@@ -50,6 +54,7 @@ const inputClasses = computed(() => hasError.value? 'inputField error' : 'inputF
             :value
             :inputmode
             :list
+            :disabled
             placeholder=""
             @change="updateValue"
         />
@@ -67,6 +72,7 @@ const inputClasses = computed(() => hasError.value? 'inputField error' : 'inputF
 .inputField {
   position: relative;
   margin-top: 12px;
+  width: 50%;
 }
 
 .inputField input {
@@ -75,8 +81,7 @@ const inputClasses = computed(() => hasError.value? 'inputField error' : 'inputF
   background-color: var(--input-bg);
   border: none;
   border-radius: 12px;
-  width: 50%;
-  color: black;
+  width: inherit;
 }
 
 .inputField input:focus {
@@ -128,5 +133,9 @@ const inputClasses = computed(() => hasError.value? 'inputField error' : 'inputF
 .errorComment {
     color: red;
     margin-left: 12px;
+}
+
+.inputField .disabled {
+    color: #A6A6A6;
 }
 </style>

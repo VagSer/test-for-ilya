@@ -31,8 +31,7 @@ const isSelectValid = computed(() => {
 })
 
 const isFormSubmitDisabled = computed(() => {
-  return (v.$anyDirty || v.$error) || 
-  !(inputValue.value && hardValidateInput.value && selectValue.value) || !isSelectValid.value
+  return !(inputValue.value && hardValidateInput.value && (selectValue.value && isSelectValid.value))
 })
 
 
@@ -48,6 +47,11 @@ const clickButton = (number) => {
 
 <template>
   <form @submit.prevent="submitForm">
+    <AppInput 
+      placeholder="disabled input"
+      :disabled="true"
+      value="disabled"
+    />
     <AppInput
       placeholder="simple input"
       v-model:value="v.inputValue.$model"
