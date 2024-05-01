@@ -34,7 +34,8 @@ const props = defineProps({
 }
 
 .burgerMenu:popover-open {
-    border: 1px solid;
+    border: none;
+    box-shadow: 0px 3px 15px 0px #4D4D4D40;
     position: relative;
     inset: unset;
     margin-left: 4px;
