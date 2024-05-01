@@ -1,0 +1,6 @@
+:root {
+  --main-purple: oklch(59.81% 0.254 298.01);
+  --error-bg: oklch(96.75% 0.016 8.16);
+  --input-bg: oklch(97.61% 0 0);
+  --burger-bg: oklch(97.36% 0.002 67.8);
+}
